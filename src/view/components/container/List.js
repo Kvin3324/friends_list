@@ -3,6 +3,8 @@
  */
 import Footer from "../Footer";
 import {getData} from "../../../model/functions";
+// import { elements } from "../../../base";
+
 
 export default class List {
     constructor(el) {
@@ -12,7 +14,7 @@ export default class List {
     
     componentWillMount = async (element) => {
         await this.setData();
-        this.renderFriendsList(element);
+        this.renderPeopleList(element);
     }
 
     setData = async () => {
@@ -20,7 +22,7 @@ export default class List {
         this.data = [...dataArray];   
     }
 
-    renderFriendsList(element) {
+    renderPeopleList(element) {
         const listSection = document.createElement('section'); // TODO: Create section
         for (let i = 0; i < this.data.length; i++) { // TODO: Create 10 cards
             const cardList = document.createElement('div');
@@ -34,17 +36,26 @@ export default class List {
                                     <p>${this.data[i].address.suite}</p>
                                     <p>${this.data[i].address.city}</p>
                                     <p>${this.data[i].email}</p>
+                                    <p> Phone number: ${this.data[i].phone}</p>
                                 </div>
                                 <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-                                <a class="card-link" href="#"></a> 
+                                <button class="add"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>`;
-                listSection.appendChild(cardList);
-        }
-        element.appendChild(listSection);
-        new Footer(element);
+                listSection.appendChild(cardList);                
+            }
+            element.appendChild(listSection);
+            new Footer(element);
+            
+            // TODO: Pick add button
+            document.querySelectorAll('.add').forEach(element => {
+                element.addEventListener('click', () => {
+                        console.log('Le button est là');
+                    
+                })
+            });
     } 
 }
              
