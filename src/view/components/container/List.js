@@ -3,7 +3,7 @@
  */
 import Footer from "../Footer";
 import {getData} from "../../../model/functions";
-// import { elements } from "../../../base";
+import { createList } from "../Title";
 
 
 export default class List {
@@ -16,7 +16,7 @@ export default class List {
         await this.setData();
         this.renderPeopleList(element);
     }
-
+    
     setData = async () => {
         const dataArray = await getData('https://jsonplaceholder.typicode.com/users');
         this.data = [...dataArray];   
@@ -49,13 +49,18 @@ export default class List {
             element.appendChild(listSection);
             new Footer(element);
             
-            // TODO: Pick add button
-            document.querySelectorAll('.add').forEach(element => {
-                element.addEventListener('click', () => {
-                        console.log('Le button est là');
+                  
+        const addBtn = document.querySelectorAll('.add'); // TODO: Pck add button
+            for (let i = 0; i < addBtn.length; i++) {
+                addBtn[i].addEventListener('click', () => {
+                    console.log(this.data[i].name);
+                    console.log(this.data[i].email);
+
+                    createList(this.data[0].name);
                     
-                })
-            });
+                });  
+            } 
     } 
 }
+
              
