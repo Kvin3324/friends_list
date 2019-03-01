@@ -2,7 +2,7 @@
  * Import, Variables
  */
 import Footer from "../Footer";
-import {getData} from "../../../model/functions";
+import { getData } from "../../../model/functions";
 import { createList } from "../Title";
 
 
@@ -11,15 +11,21 @@ export default class List {
         this.data = [];
         this.componentWillMount(el);
     }
-    
+
     componentWillMount = async (element) => {
         await this.setData();
         this.renderPeopleList(element);
     }
-    
+
     setData = async () => {
         const dataArray = await getData('https://jsonplaceholder.typicode.com/users');
-        this.data = [...dataArray];   
+        this.data = [...dataArray];
+    }
+
+    setProps(btn, name, mail) {
+        this.btn = btn;
+        this.name = name;
+        this.mail = mail;
     }
 
     renderPeopleList(element) {
@@ -35,7 +41,7 @@ export default class List {
                                 <div class="card-description">
                                     <p>${this.data[i].address.suite}</p>
                                     <p>${this.data[i].address.city}</p>
-                                    <p>${this.data[i].email}</p>
+                                    <p class="mail">${this.data[i].email}</p>
                                     <p> Phone number: ${this.data[i].phone}</p>
                                 </div>
                                 <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
@@ -44,23 +50,45 @@ export default class List {
                         </div>
                     </div>
                 </div>`;
-                listSection.appendChild(cardList);                
-            }
-            element.appendChild(listSection);
-            new Footer(element);
-            
-                  
-        const addBtn = document.querySelectorAll('.add'); // TODO: Pck add button
-            for (let i = 0; i < addBtn.length; i++) {
-                addBtn[i].addEventListener('click', () => {
-                    console.log(this.data[i].name);
-                    console.log(this.data[i].email);
+            listSection.appendChild(cardList);
+            this.setProps(
+                cardList.querySelector("button"),
+                this.data[i].name,
+                this.data[i].email
+            );
+            console.log(this);
 
-                    createList(this.data[0].name);
-                    
-                });  
-            } 
-    } 
+            // this.btn.addEventListener('click', () => { 
+            //     this.setProps(
+            //         cardList.querySelector("button"),
+            //         this.data[i].name,
+            //         this.data[i].email
+            //     );
+            // })
+        }
+        element.appendChild(listSection);
+        new Footer(element);
+    }
 }
 
-             
+//     // const addBtn = document.querySelectorAll('.add'); // TODO: Pck add button
+//     //     for (let i = 0; i < addBtn.length; i++) {
+//     //         addBtn[i].addEventListener('click', () => {
+//     //             console.log(this.data[i].name);
+//     //             console.log(this.data[i].email);
+
+//     //             createList(this.data[i].name, this.data[i].email);
+//     //             //createList(this.data[i].email);
+
+//     //         });  
+//     //     } 
+
+
+
+//     this.addBtn = document.querySelectorAll('.add'); // TODO: Pck add button
+//     this.addBtn.addEventListener('click', () => {
+//         console.log('ok');
+
+//     })
+
+// } 

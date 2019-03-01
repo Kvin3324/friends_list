@@ -21,7 +21,7 @@ export default class HeaderTitle {
     
 }
 
-export function createList() {
+export function createList(element, secondElement) {
     // TODO: Create list view
     document.querySelector('.second--title').onclick = function() {
         const titleList = (document.querySelector('.second--title')); // TODO: Pick the list button
@@ -31,7 +31,8 @@ export function createList() {
                 <div class="modal-content">
                 <div class="my--list">
                         <h4> My added friends </h4>
-                        <p>Some text in the Modal..</p>
+                        <p>${element}</p>
+                        <p>${secondElement}</p>
                         </div>
                     <span class="close">X</span>
                 </div>                
