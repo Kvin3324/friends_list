@@ -33,8 +33,8 @@ export default class List {
         for (let i = 0; i < this.data.length; i++) { // TODO: Create 10 cards
             const cardList = document.createElement('div');
             cardList.innerHTML = `
-                <div class='row'> 
-                    <div class='people--list col-12 d-flex justify-content-center'> 
+                <div class='row'>
+                    <div class='people--list col-12 d-flex justify-content-center'>
                         <div class="col-xs-12 col-sm-8">
                             <div class="card" style="background: grey;">
                                 <div class="card-category">${this.data[i].name}</div>
@@ -56,39 +56,8 @@ export default class List {
                 this.data[i].name,
                 this.data[i].email
             );
-            console.log(this);
-
-            // this.btn.addEventListener('click', () => { 
-            //     this.setProps(
-            //         cardList.querySelector("button"),
-            //         this.data[i].name,
-            //         this.data[i].email
-            //     );
-            // })
         }
         element.appendChild(listSection);
         new Footer(element);
     }
 }
-
-//     // const addBtn = document.querySelectorAll('.add'); // TODO: Pck add button
-//     //     for (let i = 0; i < addBtn.length; i++) {
-//     //         addBtn[i].addEventListener('click', () => {
-//     //             console.log(this.data[i].name);
-//     //             console.log(this.data[i].email);
-
-//     //             createList(this.data[i].name, this.data[i].email);
-//     //             //createList(this.data[i].email);
-
-//     //         });  
-//     //     } 
-
-
-
-//     this.addBtn = document.querySelectorAll('.add'); // TODO: Pck add button
-//     this.addBtn.addEventListener('click', () => {
-//         console.log('ok');
-
-//     })
-
-// } 
