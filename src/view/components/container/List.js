@@ -56,16 +56,17 @@ export default class List {
                 this.data[i].name,
                 this.data[i].email
             );
-            console.log(this);
+            
+            
+            
+                    this.btn.addEventListener('click', () => {
+                        console.log(this.name);
+                    });
 
-            // this.btn.addEventListener('click', () => { 
-            //     this.setProps(
-            //         cardList.querySelector("button"),
-            //         this.data[i].name,
-            //         this.data[i].email
-            //     );
-            // })
+
+            
         }
+        
         element.appendChild(listSection);
         new Footer(element);
     }
