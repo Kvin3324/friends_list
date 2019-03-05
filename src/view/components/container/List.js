@@ -2,9 +2,8 @@
  * Import, Variables
  */
 import Footer from "../Footer";
-//import HeaderTitle from "./Title";
 import { getData } from "../../../model/functions";
-import { createList } from "./Title";
+import Bag from "../Bag";
 
 /**
  * Component who render the list of friends via AJAX call.
@@ -29,16 +28,17 @@ export default class List {
         this.data = [...dataArray];
     }
 
-    getProps(el, card, cardElement) {
+    /**
+     * Function who addEvent on the add button, incremente the number of items and display friends in the list
+     * @param HTMLElement el === element === mainDiv
+     * @param HTMLElement card === cardList === div who render the view of the cards
+     * @param Object cardElement === el === parameter which render the object
+     */
+    getProps(card, cardElement) {
         const btn = card.querySelector("button");
         btn.addEventListener('click', () => {
             this.state.friendsInBag.push({name: cardElement.name, mail: cardElement.email});
-            // - Incrémenter le nom de friends dans ma liste
-            
-            // - Display les friends
-            console.log(this.state.friendsInBag[0].name);
-            console.log(this.state.friendsInBag[0].mail);
-            createList(this.state.friendsInBag[0].name, this.state.friendsInBag[0].mail);
+            new Bag(document.querySelector(".header--title"), this.state.friendsInBag);
         });
     }
 
@@ -69,7 +69,7 @@ export default class List {
                 </div>
             </div>`;
             listSection.appendChild(cardList);
-            this.getProps(element, cardList, el);
+            this.getProps(cardList, el);
         });
         element.appendChild(listSection);
         new Footer(element);
