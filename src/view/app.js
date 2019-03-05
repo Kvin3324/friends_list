@@ -1,7 +1,7 @@
 /**
  * Import
  */
-import HeaderTitle from "./components/Title";
+import HeaderTitle from "./components/container/Title";
 import List from "./components/container/List";
 
 export default class App {

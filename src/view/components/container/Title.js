@@ -1,22 +1,25 @@
-export default class HeaderTitle {
-   constructor(el) {
-       this.renderTitle(el);
-   }
+/**
+ * IMPORT
+ */
+import Bag from '../Bag';
 
-    renderTitle(element)  {
+export default class HeaderTitle {
+   constructor(e, tabl) {
+       this.renderTitle(e, tabl);
+   }
+   
+    renderTitle(element, tab)  {
         const div = document.createElement('div'); // TODO: Create buttons titles
         div.innerHTML = `
             <header class='container-fluid'>
                 <div class='row'> 
                     <div class='header--title col-12 d-flex justify-content-center'> 
-                        <button class='first--title btn btn-primary'><a href='#'>People</a> 
-                        <button class='second--title btn btn-secondary'><a href='#'>List</a> 
+                        <button class='first--title btn btn-primary'><a href='#'>People</a>
                     </div>
                 </div>
-            </header>
-        `;
+            </header>`;
+        new Bag(div.querySelector(".header--title", tab));
         element.appendChild(div); 
-        createList();
     }
     
 }
@@ -39,7 +42,7 @@ export function createList(element, secondElement) {
              </div>
              `;
         titleList.appendChild(listDiv); 
-        // TODO: Get the btn that opens the modal
+
         const modal = document.getElementById('myModal'); // TODO: Get the modal
         const btn = document.querySelector(".second--title");
         const btnClose = document.querySelector(".close"); // TODO: Get the btn that closes the modal
