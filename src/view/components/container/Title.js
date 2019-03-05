@@ -3,12 +3,17 @@
  */
 import Bag from '../Bag';
 
+/**
+ * Render the Header of the App
+ * @param HTMLElement the element to apply the Header.
+ * @param Array The array of friends to passed in the bag component, if empty = []
+ */
 export default class HeaderTitle {
-   constructor(e, tabl) {
-       this.renderTitle(e, tabl);
+   constructor(e) {
+       this.renderTitle(e);
    }
    
-    renderTitle(element, tab)  {
+    renderTitle(element)  {
         const div = document.createElement('div'); // TODO: Create buttons titles
         div.innerHTML = `
             <header class='container-fluid'>
@@ -18,47 +23,7 @@ export default class HeaderTitle {
                     </div>
                 </div>
             </header>`;
-        new Bag(div.querySelector(".header--title", tab));
+        new Bag(div.querySelector(".header--title"));
         element.appendChild(div); 
     }
-    
-}
-
-export function createList(element, secondElement) {
-    // TODO: Create list view
-    document.querySelector('.second--title').onclick = function() {
-        const titleList = (document.querySelector('.second--title')); // TODO: Pick the list button
-        const listDiv = document.createElement('div');
-        listDiv.innerHTML = `
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                <div class="my--list">
-                        <h4> My added friends </h4>
-                        <p>${element}</p>
-                        <p>${secondElement}</p>
-                        </div>
-                    <span class="close">X</span>
-                </div>                
-             </div>
-             `;
-        titleList.appendChild(listDiv); 
-
-        const modal = document.getElementById('myModal'); // TODO: Get the modal
-        const btn = document.querySelector(".second--title");
-        const btnClose = document.querySelector(".close"); // TODO: Get the btn that closes the modal
-        // TODO: When the user clicks the button, open the modal 
-        btn.addEventListener('click', () => {
-            modal.style.display = "block";
-        });
-        btnClose.onclick = function () { // TODO: When the user clicks on <span> (x), close the modal
-                modal.style.display = "none";
-        }
-        // TODO: When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-    }
-
 }
