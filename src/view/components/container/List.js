@@ -4,8 +4,6 @@
 import Footer from "../Footer";
 import { getData } from "../../../model/functions";
 import Bag from "../Bag";
-
-
 /**
  * Component who render the list of friends via AJAX call.
  * @param HTMLElement the param 'element' === mainDiv 
