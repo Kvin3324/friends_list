@@ -28,42 +28,34 @@ export default class Bag {
     /**
      * Create the modal section
      */
-    modalHandler() {
-
+    modalHandler() {        
         const theModal = document.createElement('div');
         theModal.setAttribute('id', 'myModal');
         theModal.setAttribute('class', 'modal');
         theModal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close">X</span>
+            <div class="modal-content">
+                <span class="close">X</span>
                 </div>`;
-        this.btnProps.appendChild(theModal);
-        
+                this.btnProps.appendChild(theModal);
+                
         for (let i = 0; i < this.state.friends.length; i++) {
             const list = document.createElement('div');
+            list.setAttribute('class', 'my--list');
             list.innerHTML = `
-                <div class="my--list">
                 <p>${this.state.friends[i].name}</p>
                 <p>${this.state.friends[i].mail}</p>
-                <p class="delete"><i class="fas fa-trash"></i></p>
-            `;
+                <p class="delete"><i class="fas fa-trash"></i></p>`;
             document.querySelector('.modal-content').appendChild(list);
         }
 
         const modal = document.getElementById('myModal');
-        this.btnProps.addEventListener("click", () => {
-            modal.style.display = "block";    
-        })
-        // TODO: When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
+        this.btnProps.addEventListener("click", (event) => {
+            modal.style.display = "block";
+            if (event.target == modal) { // TODO: When the user clicks on the modal, close it
                 modal.style.display = "none";
+            } else if (event.target == document.querySelector('.close')) {
+                modal.style.display = "none";                
             }
-        };
-        const btnClose = document.querySelector('.close');
-        console.log(btnClose);
-        
-        
-        
+        })
     }
 }
