@@ -30,6 +30,7 @@ export default class Bag {
 
     /**
      * Create the modal section
+     * @param HTMLElement this.html === list === view of my list
      */
     modalHandler() {
         const theModal = document.createElement('div');
@@ -42,20 +43,33 @@ export default class Bag {
             </div>`;
         this.btnProps.appendChild(theModal);
 
-        for (let i = 0; i < this.state.friends.length; i++) {
+
+        this.state.friends.map(el => {
             const list = document.createElement('div');
             list.setAttribute('class', 'my--list');
             list.innerHTML = `
             <div class="card" style="background: #3B5998;">
-                    <p>${this.state.friends[i].name}</p>
-                    <p>${this.state.friends[i].mail}</p>
-                    <p>Phone number: ${this.state.friends[i].phone}</p>
-                    <p class="delete"><i class="fas fa-trash"></i></p>
-            </div>`;
-            document.querySelector('.modal-content').appendChild(list);
-        }
+                     <p>${el.name}</p>
+                     <p>${el.mail}</p>
+                     <p>Phone number: ${el.phone}</p>
+                     <p class="delete"><i class="fas fa-trash"></i></p>
+             </div>`;
+             this.html = list;
+             document.querySelector('.modal-content').appendChild(list);
+
+             this.deleteElem();
+            })
 
         this.modalActions();
+    }
+
+    deleteElem() {
+        const iconTrash = this.html.querySelector(".delete");
+        iconTrash.addEventListener('click', () => {
+            console.log(this.state.friends);
+            this.state.friends.splice(0,1);
+            console.log(this.state.friends);
+        });
     }
 
     modalActions() {
