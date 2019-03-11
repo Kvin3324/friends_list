@@ -12,7 +12,11 @@
         margin-left: 65px;
         width: 23%;
         height: 55%;
+    }
 
+    .first--title {
+      background-color: #3B5998;
+      border-color: #3B5998;
     }
 }
 
@@ -61,12 +65,15 @@
 .my--list {
   height: 85%;
   width: 100%;
-  margin-top: 5%;
+  //margin-top: 5%;
+
+  .card {
+    margin-top: 10%!important;
+  }
 
   .delete {
     position: absolute;
-    top: 37%;
-    right: 10%;
+    left: 94%;
     font-size: 28px;
   }
   .delete:hover,
@@ -90,6 +97,7 @@ section {
   color: white;
   position: relative;
   margin-top: 20%;
+  margin-bottom: 10%;
 }
 .card-user {
   position: absolute;
