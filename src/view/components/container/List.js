@@ -36,7 +36,7 @@ export default class List {
     getProps(card, cardElement) {
         const btn = card.querySelector("button");
         btn.addEventListener('click', () => {
-            this.state.friendsInBag.push({name: cardElement.name, mail: cardElement.email});
+            this.state.friendsInBag.push({name: cardElement.name, mail: cardElement.email, phone: cardElement.phone});
             new Bag(document.querySelector(".header--title"), this.state.friendsInBag);
         });
     }
@@ -61,7 +61,7 @@ export default class List {
                                 <p class="mail">${el.email}</p>
                                 <p> Phone number: ${el.phone}</p>
                             </div>
-                            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+                            <img class="card-user" src="http://i.pravatar.cc/150?img=${Math.random() * this.data.length}">
                             <button class="add"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>

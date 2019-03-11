@@ -28,34 +28,43 @@ export default class Bag {
     /**
      * Create the modal section
      */
-    modalHandler() {        
+    modalHandler() {
         const theModal = document.createElement('div');
         theModal.setAttribute('id', 'myModal');
         theModal.setAttribute('class', 'modal');
         theModal.innerHTML = `
             <div class="modal-content">
-                <span class="close">X</span>
-                </div>`;
-                this.btnProps.appendChild(theModal);
-                
+                    <span class="close">X</span>
+                <h3 class="mt-4">My added friends</h3>
+            </div>`;
+        this.btnProps.appendChild(theModal);
+
         for (let i = 0; i < this.state.friends.length; i++) {
             const list = document.createElement('div');
             list.setAttribute('class', 'my--list');
             list.innerHTML = `
-                <p>${this.state.friends[i].name}</p>
-                <p>${this.state.friends[i].mail}</p>
-                <p class="delete"><i class="fas fa-trash"></i></p>`;
+            <div class="card" style="background: #3B5998;">
+                    <p>${this.state.friends[i].name}</p>
+                    <p>${this.state.friends[i].mail}</p>
+                    <p>Phone number: ${this.state.friends[i].phone}</p>
+                    <p class="delete"><i class="fas fa-trash"></i></p>
+            </div>`;
             document.querySelector('.modal-content').appendChild(list);
         }
 
+        this.modalActions();
+    }
+
+    modalActions() {
         const modal = document.getElementById('myModal');
         this.btnProps.addEventListener("click", (event) => {
             modal.style.display = "block";
             if (event.target == modal) { // TODO: When the user clicks on the modal, close it
                 modal.style.display = "none";
-            } else if (event.target == document.querySelector('.close')) {
-                modal.style.display = "none";                
             }
-        })
+            else if (event.target == document.querySelector('.close')) {
+                modal.style.display = "none";
+            }
+        });
     }
 }
