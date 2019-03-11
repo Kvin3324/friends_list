@@ -18,6 +18,9 @@ export default class Bag {
         this.btnProps = button;
         if (n.length === 0) {
             element.appendChild(button);
+            button.onclick = function () {
+                alert("Sorry, no friends added yet.");
+            };
         } else if (n.length > 0) {
             const btn = document.querySelector(".second--title");
             element.removeChild(btn);
