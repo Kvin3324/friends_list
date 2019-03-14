@@ -16,13 +16,16 @@ export default class Bag {
         button.setAttribute('class', 'second--title btn btn-secondary');
         button.innerHTML = `<a href='#'>List ${n.length}</a>`;
         this.btnProps = button;
-        if (n.length === 0) {
-            element.appendChild(button);
-        } else if (n.length > 0) {
-            const btn = document.querySelector(".second--title");
-            element.removeChild(btn);
-            element.appendChild(button);
-        };
+            if (n.length === 0) {
+                element.appendChild(button);
+                button.onclick = function () {
+                    alert("Sorry, no friends added yet.");
+                };
+            } else if (n.length > 0) {
+                const btn = document.querySelector(".second--title");
+                element.removeChild(btn);
+                element.appendChild(button);
+            };
     }
 
     /**
@@ -40,8 +43,7 @@ export default class Bag {
             </div>`;
         this.btnProps.appendChild(theModal);
 
-
-        this.state.friends.map((el,i) => {
+        this.state.friends.map((el, i) => {
             const list = document.createElement('div');
             list.setAttribute('class', 'my--list');
             list.innerHTML = `
@@ -51,23 +53,54 @@ export default class Bag {
                      <p>Phone number: ${el.phone}</p>
                      <p class="delete"><i class="fas fa-trash"></i></p>
              </div>`;
-             this.html = list;
-             document.querySelector('.modal-content').appendChild(list);
-
-             this.deleteElem(i);
-            })
-
+            this.html = list;
+            this.name = el.name;
+            document.querySelector('.modal-content').appendChild(list);
+            this.deleteElem(i);
+        })
         this.modalActions();
     }
 
-    deleteElem(index) {
+    deleteElem(i) {
         const iconTrash = this.html.querySelector(".delete");
         iconTrash.addEventListener('click', () => {
-            console.log(this.state.friends);
-            this.state.friends.splice(index,1);
-            console.log(this.state.friends);
-        });
+                const arrNames = [];
+                this.state.friends.forEach(item => {
+                    arrNames.push(item.name);
+                })
+
+                   if (arrNames[i] === this.state.friends[i].name) {
+                        const position = event.target;
+                        this.state.friends.splice(position, 1);
+                        console.log(this.state.friends);
+                    }
+
+            // this.state.friends.splice(i, 1);
+            // console.log(this.state.friends);
+        })
     }
+    // const arrTrash = [];
+    // const deleteElem = this.state.friends.splice(this.state.friends.indexOf(event.target), 1);
+    // arrTrash.push(deleteElem);
+    // console.log(arrTrash);
+    // console.log(this.state.friends);
+    // if (this.name === this.name) {
+    //  const position = this.state.friends.indexOf(event.target)
+    //     this.state.friends.splice(position,1);
+    //     console.log(this.state.friends); 
+    // }
+
+    // for (let i = 0; i < this.state.friends.length; i++) {
+    //     //console.log(this.state.friends[i].name);
+    //     const arrNames = [];
+    //     arrNames.push(this.state.friends[i].name);
+    //     console.log(arrNames);
+    // if (arrNames[i]=== this.state.friends[i].name) {
+    //     console.log("Ok");
+    // } else {
+    //     console.log("Something wrong");
+    // }
+    //}
 
     modalActions() {
         const modal = document.getElementById('myModal');
