@@ -64,43 +64,11 @@ export default class Bag {
     deleteElem(i) {
         const iconTrash = this.html.querySelector(".delete");
         iconTrash.addEventListener('click', () => {
-                const arrNames = [];
-                this.state.friends.forEach(item => {
-                    arrNames.push(item.name);
-                })
-
-                   if (arrNames[i] === this.state.friends[i].name) {
-                        const position = event.target;
-                        this.state.friends.splice(position, 1);
-                        console.log(this.state.friends);
-                    }
-
-            // this.state.friends.splice(i, 1);
-            // console.log(this.state.friends);
+            console.log(this.state.friends);
+            this.state.friends.splice(i, 1);
+            console.log(this.state.friends);
         })
     }
-    // const arrTrash = [];
-    // const deleteElem = this.state.friends.splice(this.state.friends.indexOf(event.target), 1);
-    // arrTrash.push(deleteElem);
-    // console.log(arrTrash);
-    // console.log(this.state.friends);
-    // if (this.name === this.name) {
-    //  const position = this.state.friends.indexOf(event.target)
-    //     this.state.friends.splice(position,1);
-    //     console.log(this.state.friends); 
-    // }
-
-    // for (let i = 0; i < this.state.friends.length; i++) {
-    //     //console.log(this.state.friends[i].name);
-    //     const arrNames = [];
-    //     arrNames.push(this.state.friends[i].name);
-    //     console.log(arrNames);
-    // if (arrNames[i]=== this.state.friends[i].name) {
-    //     console.log("Ok");
-    // } else {
-    //     console.log("Something wrong");
-    // }
-    //}
 
     modalActions() {
         const modal = document.getElementById('myModal');
