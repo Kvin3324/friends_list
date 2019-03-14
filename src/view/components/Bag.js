@@ -18,9 +18,6 @@ export default class Bag {
         this.btnProps = button;
         if (n.length === 0) {
             element.appendChild(button);
-            button.onclick = function () {
-                alert("Sorry, no friends added yet.");
-            };
         } else if (n.length > 0) {
             const btn = document.querySelector(".second--title");
             element.removeChild(btn);
@@ -44,7 +41,7 @@ export default class Bag {
         this.btnProps.appendChild(theModal);
 
 
-        this.state.friends.map(el => {
+        this.state.friends.map((el,i) => {
             const list = document.createElement('div');
             list.setAttribute('class', 'my--list');
             list.innerHTML = `
@@ -57,17 +54,17 @@ export default class Bag {
              this.html = list;
              document.querySelector('.modal-content').appendChild(list);
 
-             this.deleteElem();
+             this.deleteElem(i);
             })
 
         this.modalActions();
     }
 
-    deleteElem() {
+    deleteElem(index) {
         const iconTrash = this.html.querySelector(".delete");
         iconTrash.addEventListener('click', () => {
             console.log(this.state.friends);
-            this.state.friends.splice(0,1);
+            this.state.friends.splice(index,1);
             console.log(this.state.friends);
         });
     }
