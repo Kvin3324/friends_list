@@ -53,8 +53,8 @@ export default class Bag {
                      <p>Phone number: ${el.phone}</p>
                      <p class="delete"><i class="fas fa-trash"></i></p>
              </div>`;
-            this.html = list;
-            this.name = el.name;
+            this.btnDelete = list.querySelector(".delete");
+            this.htmlList = list;            
             document.querySelector('.modal-content').appendChild(list);
             this.deleteElem(i);
         })
@@ -62,11 +62,15 @@ export default class Bag {
     }
 
     deleteElem(i) {
-        const iconTrash = this.html.querySelector(".delete");
+        const iconTrash = this.btnDelete;
         iconTrash.addEventListener('click', () => {
+            console.log(iconTrash);
+            
             console.log(this.state.friends);
             this.state.friends.splice(i, 1);
             console.log(this.state.friends);
+            //this.htmlList.parentNode.removeChild(this.htmlList);
+            //this.htmlList.remove();
         })
     }
 
