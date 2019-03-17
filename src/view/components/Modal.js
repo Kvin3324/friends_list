@@ -53,7 +53,7 @@ export default class Modal {
                 if (el.name === element.name) {
                     this.data.splice(i, 1);
                     this.render(this.data);
-                    return new Bag(document.querySelector(".header--title"), this.data);
+                    return new Bag(document.querySelector(".header--title"), this.data, true);
                 }
             });
         });

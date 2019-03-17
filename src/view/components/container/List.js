@@ -38,8 +38,8 @@ export default class List {
         const btn = card.querySelector("button");
         btn.addEventListener('click', () => {
             this.state.friendsInBag.push({name: cardElement.name, mail: cardElement.email, phone: cardElement.phone});
-            new Bag(document.querySelector(".header--title"), this.state.friendsInBag);
-        });
+            new Bag(document.querySelector(".header--title"), this.state.friendsInBag, false);
+        }); 
     }
 
     /**

@@ -4,13 +4,14 @@ import Modal from "./Modal";
  * Pick all data's items and display in my bag
  * @param {HTMLElement} el the html element to render the bag component.
  * @param {Array} friendsTab the friends Array use for create modal and show number of friends in list.
+ * @param {Boolean} isModalOpen Define if the Bag should render in the context of modal or not.
  */
 export default class Bag {
-    constructor(el, friendsTab = []) {
+    constructor(el, friendsTab = [], isModalOpen) {
         this.state = {
             friends: friendsTab
         }
-        this.renderBag(el, this.state.friends);
+        this.renderBag(el, this.state.friends, isModalOpen);
         this.renderModal(this.state.friends);
     }
 
@@ -29,19 +30,26 @@ export default class Bag {
      * @param {HTMLElement} element The element to add or update the component.
      * @param {Array} n The array of data to get length for rendering.
      */
-    renderBag(element, n) {
+    renderBag(element, n, isModalOpen) {
         const button = document.createElement('button');
 
         button.setAttribute('class', 'second--title btn btn-secondary');
         button.innerHTML = `<a href='#'>List ${n.length}</a>`;
         this.btnProps = button;
-        if (n.length === 0) {
-            element.appendChild(button);
-        } else if (n.length > 0) {
+
+        if (isModalOpen === true) {
             const btn = document.querySelector(".second--title");
             element.removeChild(btn);
             element.appendChild(button);
-        };
+        } else {
+            if (n.length === 0) {
+                element.appendChild(button);
+            } else {
+                const btn = document.querySelector(".second--title");
+                element.removeChild(btn);
+                element.appendChild(button);
+            }
+        }
     }
 
 }
