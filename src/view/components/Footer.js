@@ -8,14 +8,12 @@ export default class Footer {
         footer.innerHTML = `
         <div class="footer">
             <div class="footer-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Kvin3324"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/kvinjya"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/k%C3%A9vin-joya-5b6250133/"><i class="fab fa-linkedin"></i></a>
             </div>
             <div class="footer-copyright">
-                This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+                This footer is made with <i class="fas fa-heart"></i> by Kévin Joya.
             </div>
         </div>
         `;

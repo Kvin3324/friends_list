@@ -37,6 +37,12 @@ export default class Bag {
         button.innerHTML = `<a href='#'>List ${n.length}</a>`;
         this.btnProps = button;
 
+        button.addEventListener("click", () => {
+            if (n.length === 0) {
+                alert("No friends added yet, please press + to add one.");
+            }
+        })
+
         if (isModalOpen === true) {
             const btn = document.querySelector(".second--title");
             element.removeChild(btn);

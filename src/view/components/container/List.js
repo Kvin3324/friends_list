@@ -54,7 +54,7 @@ export default class List {
             <div class='row'>
                 <div class='people--list col-12 d-flex justify-content-center'>
                     <div class="col-xs-12 col-sm-8">
-                        <div class="card" style="background: grey;">
+                        <div class="card">
                             <div class="card-category">${el.name}</div>
                             <div class="card-description">
                                 <p>${el.address.suite}</p>
