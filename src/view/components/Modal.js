@@ -40,6 +40,11 @@ export default class Modal {
         const modal = document.getElementById('myModal');
         const spanClose = document.querySelector(".close");
         spanClose.addEventListener("click", () => document.querySelector("body").removeChild(modal));
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                document.querySelector('body').removeChild(modal)
+            } 
+        })
     }
 
     /**
