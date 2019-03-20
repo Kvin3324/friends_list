@@ -20,9 +20,7 @@ export default class Bag {
      * @param {Array} friendsData The data to pass in `new Modal()`.
      */
     renderModal = friendsData => {
-        if (!document.querySelector("#myModal")) {
             this.btnProps.addEventListener("click", () => new Modal(friendsData));
-        }
     };
 
     /**
