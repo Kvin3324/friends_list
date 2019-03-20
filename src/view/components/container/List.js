@@ -36,8 +36,14 @@ export default class List {
      */
     getProps(card, cardElement) {
         const btn = card.querySelector("button");
-        btn.addEventListener('click', () => {
-            this.state.friendsInBag.push({name: cardElement.name, mail: cardElement.email, phone: cardElement.phone});
+
+        btn.addEventListener('click', () => { 
+            this.state.friendsInBag.forEach(element => {
+                if (element.name === cardElement.name) {
+                    alert(`Be carreful: You have already add ${cardElement.name}, you can't add the same person, please delete the card. `);
+                } 
+            });
+            this.state.friendsInBag.push({ name: cardElement.name, mail: cardElement.email, phone: cardElement.phone });
             new Bag(document.querySelector(".header--title"), this.state.friendsInBag, false);
         }); 
     }
