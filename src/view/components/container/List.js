@@ -35,17 +35,29 @@ export default class List {
      * @param Object cardElement === el === parameter which render the object
      */
     getProps(card, cardElement) {
+        let isFriendPresent;
         const btn = card.querySelector("button");
 
-        btn.addEventListener('click', () => { 
-            this.state.friendsInBag.forEach(element => {
-                if (element.name === cardElement.name) {
-                    alert(`Be carreful: You have already add ${cardElement.name}, you can't add the same person, please delete the card. `);
-                } 
-            });
-            this.state.friendsInBag.push({ name: cardElement.name, mail: cardElement.email, phone: cardElement.phone });
-            new Bag(document.querySelector(".header--title"), this.state.friendsInBag, false);
-        }); 
+        btn.addEventListener("click", () => {
+            if (this.state.friendsInBag.length === 0) {
+                this.state.friendsInBag.push({ name: cardElement.name, mail: cardElement.email, phone: cardElement.phone });
+                new Bag(document.querySelector(".header--title"), this.state.friendsInBag, false);
+            } else {
+                for (let i = 0; i < this.state.friendsInBag.length; i++) {
+                    if (this.state.friendsInBag[i].name === cardElement.name) {
+                        isFriendPresent = false;
+                        alert(`Sorry you have already add ${cardElement.name}`)
+                        break;
+                    } else {
+                        isFriendPresent = true;
+                    }
+                }        
+                        if (isFriendPresent) {
+                            this.state.friendsInBag.push({ name: cardElement.name, mail: cardElement.email, phone: cardElement.phone });
+                            new Bag(document.querySelector(".header--title"), this.state.friendsInBag, false);
+                        }
+            }
+        });
     }
 
     /**
